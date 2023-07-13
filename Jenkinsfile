@@ -5,14 +5,16 @@ pipeline {
     maven 'my_maven'
   }
   environment {
-    gitName = 'goodkyu'
-    gitEmail = 'sunkyu0731@naver.com'
+    gitName = 'oolralra'
+    gitEmail = 'oolralra@gmail.com'
     githubCredential = 'git_cre'
-    dockerHubRegistry = '10.7.7.4:5000/sbimage'
+    dockerHubRegistry = '10.7.7.0:5000/sbimage'
     gitWebaddress = 'https://github.com/goodkyu/sb_code.git'
     gitSshaddress = 'git@github.com:goodkyu/sb_code.git'
-    gitDepaddress = 'git@github.com:goodkyu//deploy.git'
+    gitDepaddress = 'git@github.com:goodkyu/deploy.git'
+
   }
+
   stages {
     stage('Checkout Github') {
       steps {
@@ -27,7 +29,6 @@ pipeline {
         }
       }
     }
-
 
     stage('Maven Build') {
       steps {
@@ -57,15 +58,15 @@ pipeline {
         }
       }
     }
-
+    
     stage('Docker Image Push') {
       steps {
           
           
             sh "docker push ${dockerHubRegistry}:${currentBuild.number}"
             sh "docker push ${dockerHubRegistry}:latest"
-
-      }
+      }  
+      
       post {
       // docker push가 성공하든 실패하든 로컬의 도커이미지는 삭제.
         failure {
@@ -109,9 +110,8 @@ pipeline {
         }
       }
     }
-
-
-
-
+ 
+    
   }
 }
+
