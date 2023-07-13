@@ -5,10 +5,10 @@ pipeline {
     maven 'my_maven'
   }
   environment {
-    gitName = 'oolralra'
-    gitEmail = 'oolralra@gmail.com'
+    gitName = 'goodkyu'
+    gitEmail = 'goodkyu@naver.com'
     githubCredential = 'git_cre'
-    dockerHubRegistry = '10.7.7.0:5000/sbimage'
+    dockerHubRegistry = '10.7.7.4:5000/sbimage'
     gitWebaddress = 'https://github.com/goodkyu/sb_code.git'
     gitSshaddress = 'git@github.com:goodkyu/sb_code.git'
     gitDepaddress = 'git@github.com:goodkyu/deploy.git'
